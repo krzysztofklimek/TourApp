@@ -1,0 +1,50 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="${relativePackage}.${activityClass}" >
+
+    <EditText
+        android:id="@+id/login"
+        android:layout_height="55dp"
+        android:layout_width="300dp"
+        android:textSize="25dp"
+        android:hint="login"
+        />
+
+
+    <EditText
+        android:id="@+id/password"
+        android:layout_height="55dp"
+        android:layout_width="300dp"
+        android:textSize="25dp"
+        android:layout_marginTop="10dp"
+        android:hint="password"
+        android:layout_below="@+id/login"
+        />
+
+
+    <Button
+        android:id="@+id/loginButton"
+        android:backgroundTint="#89f200"
+        android:layout_height="55dp"
+        android:layout_width="300dp"
+        android:text="login"
+        android:onClick="onLoginClick"
+        android:textSize="25dp"
+        android:gravity="center"
+        android:layout_below="@+id/password"
+        android:layout_marginTop="30dp"/>
+    
+    
+    <EditText
+        android:id="@+id/tekst"
+        android:layout_height="55dp"
+        android:layout_width="300dp"
+        android:textSize="25dp"
+        android:layout_marginTop="10dp"
+        android:layout_below="@+id/loginButton"
+        />
+
+
+</RelativeLayout>
