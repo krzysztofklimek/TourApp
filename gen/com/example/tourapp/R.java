@@ -14,19 +14,20 @@ public final class R {
         public static final int ic_launcher=0x7f020000;
     }
     public static final class id {
+        public static final int checkBox=0x7f060005;
         public static final int listViewTourist=0x7f060003;
         public static final int login=0x7f060000;
         public static final int loginButton=0x7f060002;
         public static final int password=0x7f060001;
-        public static final int value=0x7f060004;
-        public static final int valuenext=0x7f060005;
+        public static final int tourDate=0x7f060006;
+        public static final int tourDescription=0x7f060007;
+        public static final int tourName=0x7f060004;
     }
     public static final class layout {
         public static final int activity_guide=0x7f030000;
         public static final int activity_login=0x7f030001;
         public static final int activity_tourist=0x7f030002;
         public static final int list_tourist=0x7f030003;
-        public static final int test=0x7f030004;
     }
     public static final class string {
         public static final int app_name=0x7f040000;

@@ -15,16 +15,21 @@ import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.ArrayAdapter;
+import android.widget.ListAdapter;
 import android.widget.ListView;
 
 public class TouristActivity extends Activity {
-	
-	ArrayList <String> tourNames = new ArrayList<String>();
 
+	public static final String EXTRA_EMAIL = "email";
+	String email;
+	ArrayList <Tour> tours = new ArrayList <Tour>();
+	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_tourist);
+		
+		email = (String) getIntent().getExtras().get(EXTRA_EMAIL);
 		
 		createList();
 	}
@@ -34,32 +39,11 @@ public class TouristActivity extends Activity {
 		
 		new NamesFill().execute();
 		
-		
-		
-		/*ArrayAdapter<String> adapter = new ArrayAdapter<String>(
-				TouristActivity.this,
-				R.layout.list_tourist,
-				tourNames);*/
-		
-		
-		String[] myItems = {"qwe","asd","dfg","gg","xxx"};
-		
-		ArrayAdapter<String> adapter = new ArrayAdapter<String>(
-				TouristActivity.this,
-				R.layout.test,
-				R.id.value,
-				tourNames);
-		
-		ArrayAdapter<String> adapternext = new ArrayAdapter<String>(
-				TouristActivity.this,
-				R.layout.test,
-				R.id.valuenext,
-				myItems);
+		ListAdapter adapter = new TouristListAdapter(TouristActivity.this, tours);
 		
 		ListView list = (ListView) findViewById(R.id.listViewTourist);
 		list.setAdapter(adapter);
-		//list.setAdapter(adapternext);
-		
+	
 	}
 	
 	
@@ -71,15 +55,18 @@ public class TouristActivity extends Activity {
 
 			try {
 				String result = "";
-				String urlAdress = "http://10.0.2.2/inz/touristTourList.php";
+				String urlAdress = "http://10.0.2.2/inz/touristTourList.php/?string=" + email;
 				URL url = new URL(urlAdress);
 				BufferedReader in = new BufferedReader(new InputStreamReader(url.openStream()));
 				while ((result = in.readLine()) != null) {
 					//tourNames.add(result);
 					Scanner sc = new Scanner(result).useDelimiter("/");
 					while(sc.hasNext()){
-						String str = sc.next();
-						tourNames.add(str);
+						String name = sc.next();
+						String date = sc.next();
+						String description = sc.next();
+						String checkbox = sc.next();
+						tours.add(new Tour(name.toUpperCase(), date, description, checkbox));
 					}
 					sc.close();
 				}

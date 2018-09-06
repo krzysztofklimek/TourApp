@@ -70,6 +70,7 @@ public class LoginActivity extends Activity {
 
 			if (type.equals("t")) {
 				Intent intent = new Intent(LoginActivity.this, TouristActivity.class);
+				intent.putExtra(TouristActivity.EXTRA_EMAIL, (String) log);
 				startActivity(intent);
 			} else if (type.equals("g")) {
 				Intent intent = new Intent(LoginActivity.this, GuideActivity.class);
