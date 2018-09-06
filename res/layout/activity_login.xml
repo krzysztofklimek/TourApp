@@ -9,7 +9,7 @@
         android:layout_height="55dp"
         android:layout_width="300dp"
         android:textSize="25dp"
-        android:hint="login"
+        android:hint="email"
         />
 
 
@@ -35,16 +35,6 @@
         android:gravity="center"
         android:layout_below="@+id/password"
         android:layout_marginTop="30dp"/>
-    
-    
-    <EditText
-        android:id="@+id/tekst"
-        android:layout_height="55dp"
-        android:layout_width="300dp"
-        android:textSize="25dp"
-        android:layout_marginTop="10dp"
-        android:layout_below="@+id/loginButton"
-        />
 
 
 </RelativeLayout>

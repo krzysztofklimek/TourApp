@@ -23,52 +23,62 @@ import android.widget.EditText;
 
 public class LoginActivity extends Activity {
 
-	
 	EditText output;
-	
-	
+	EditText login, password;
+
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_login);
-		
-		output = (EditText) findViewById(R.id.tekst);				
+
+		login = (EditText) findViewById(R.id.login);
+		password = (EditText) findViewById(R.id.password);
 	}
-	
-	
-	private class MyTask extends AsyncTask<Void, Void, Void> {
-		private String password="";
-		
-		@Override
-		protected Void doInBackground(Void... arg0){
-			String str = "bla";
-			try {
-				String result = "";
-				URL url = new URL("http://10.0.2.2/inz/login.php");
-				BufferedReader in = new BufferedReader(new InputStreamReader(url.openStream()));
-				while ((result = in.readLine()) != null) {
-					password = result;
-				}
-				
-			} catch (MalformedURLException e) {
-				
-			} catch (IOException e) {
-				
-			}
-			return null;
-			
-		}
-		
-		@Override
-		protected void onPostExecute(Void result){
-			output.setText(password);
-			super.onPostExecute(result);
-		}
-	}
-	
-	
-	
+
 	public void onLoginClick(View view) {
 		new MyTask().execute();
-	}	
+	}
+
+	private class MyTask extends AsyncTask<Void, Void, Void> {
+		private String type = "";
+		private String log = login.getText().toString();
+		private String pass = password.getText().toString();
+
+		@Override
+		protected Void doInBackground(Void... voids) {
+
+			try {
+				String result = "";
+				String urlAdress = "http://10.0.2.2/inz/login.php/?string=" + log + "/" + pass;
+				URL url = new URL(urlAdress);
+				BufferedReader in = new BufferedReader(new InputStreamReader(url.openStream()));
+				while ((result = in.readLine()) != null) {
+					type = result;
+				}
+
+			} catch (MalformedURLException e) {
+
+			} catch (IOException e) {
+
+			}
+			return null;
+
+		}
+
+		@Override
+		protected void onPostExecute(Void voids) {
+
+			if (type.equals("t")) {
+				Intent intent = new Intent(LoginActivity.this, TouristActivity.class);
+				startActivity(intent);
+			} else if (type.equals("g")) {
+				Intent intent = new Intent(LoginActivity.this, GuideActivity.class);
+				startActivity(intent);
+			} else {
+				Intent intent = new Intent(LoginActivity.this, LoginActivity.class);
+				startActivity(intent);
+			}
+		}
+	}
+
 }

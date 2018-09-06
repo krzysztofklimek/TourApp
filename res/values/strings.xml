@@ -4,5 +4,6 @@
     <string name="app_name">TourApp</string>
     <string name="hello_world">Hello world!</string>
     <string name="title_activity_tourist">TouristActivity</string>
+    <string name="title_activity_guide">GuideActivity</string>
 
 </resources>
