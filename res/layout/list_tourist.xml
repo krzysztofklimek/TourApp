@@ -18,7 +18,11 @@
          android:layout_width="wrap_content"
          android:layout_height="wrap_content"
          android:layout_toRightOf="@+id/tourName"
-         android:text="Choose tour" />
+         android:text="Choose tour"
+         android:onClick="onCheckBoxClick" 
+         android:button="@null"
+		 android:drawableRight="?android:attr/listChoiceIndicatorMultiple"
+         />
     
      <TextView
         android:id="@+id/tourDate"

@@ -9,6 +9,7 @@ import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.CheckBox;
 import android.widget.TextView;
+import android.widget.Toast;
 
 class TouristListAdapter extends ArrayAdapter<Tour> {
 
@@ -31,7 +32,10 @@ class TouristListAdapter extends ArrayAdapter<Tour> {
 		dateText.setText(tour.getDate());
 		descriptionText.setText(tour.getDescription());
 		checkBox.setChecked(tour.getChecked());
-
+		checkBox.setText(tour.getName() + "\n" + tour.getDate());
+		
 		return customView;
 	}
+	
+	
 }

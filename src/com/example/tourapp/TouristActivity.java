@@ -14,15 +14,22 @@ import android.os.AsyncTask;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
+import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
+import android.widget.CompoundButton;
 import android.widget.ListAdapter;
 import android.widget.ListView;
+import android.widget.TextView;
+import android.widget.Toast;
 
-public class TouristActivity extends Activity {
+public class TouristActivity extends Activity { // implements android.widget.CompoundButton.OnCheckedChangeListener {
 
 	public static final String EXTRA_EMAIL = "email";
 	String email;
 	ArrayList <Tour> tours = new ArrayList <Tour>();
+	ListView list;
+	ListAdapter adapter;
 	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -31,7 +38,8 @@ public class TouristActivity extends Activity {
 		
 		email = (String) getIntent().getExtras().get(EXTRA_EMAIL);
 		
-		createList();
+		createList();	
+	
 	}
 	
 	
@@ -39,11 +47,18 @@ public class TouristActivity extends Activity {
 		
 		new NamesFill().execute();
 		
-		ListAdapter adapter = new TouristListAdapter(TouristActivity.this, tours);
-		
-		ListView list = (ListView) findViewById(R.id.listViewTourist);
-		list.setAdapter(adapter);
+		adapter = new TouristListAdapter(TouristActivity.this, tours);
+		//ListView list = (ListView) findViewById(R.id.listViewTourist);
+		list = (ListView) findViewById(R.id.listViewTourist);
+		list.setAdapter(adapter);	
+	}
 	
+	public void onCheckBoxClick(View view){
+		
+		String str = ((TextView)view).getText().toString();
+		
+		Toast toast = Toast.makeText(this, str, Toast.LENGTH_SHORT);
+		toast.show();
 	}
 	
 	
@@ -74,8 +89,6 @@ public class TouristActivity extends Activity {
 			catch (MalformedURLException e) {} 
 			catch (IOException e) {}
 			return null;
-		}
-
-		
+		}		
 	}
 }
