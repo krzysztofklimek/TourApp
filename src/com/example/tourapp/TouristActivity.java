@@ -17,6 +17,7 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
+import android.widget.CheckBox;
 import android.widget.CompoundButton;
 import android.widget.ListAdapter;
 import android.widget.ListView;
@@ -27,6 +28,8 @@ public class TouristActivity extends Activity { // implements android.widget.Com
 
 	public static final String EXTRA_EMAIL = "email";
 	String email;
+	String tourName;
+	String tourDate;
 	ArrayList <Tour> tours = new ArrayList <Tour>();
 	ListView list;
 	ListAdapter adapter;
@@ -48,17 +51,32 @@ public class TouristActivity extends Activity { // implements android.widget.Com
 		new NamesFill().execute();
 		
 		adapter = new TouristListAdapter(TouristActivity.this, tours);
-		//ListView list = (ListView) findViewById(R.id.listViewTourist);
 		list = (ListView) findViewById(R.id.listViewTourist);
 		list.setAdapter(adapter);	
 	}
 	
 	public void onCheckBoxClick(View view){
-		
+			
+		CheckBox checkBox = (CheckBox) view;
 		String str = ((TextView)view).getText().toString();
+		Scanner sc = new Scanner(str).useDelimiter("\n");
+		tourName = sc.next().toLowerCase();// + " " + sc.next().toLowerCase();
+		tourName = tourName.replace(" ", "%20");
+		//tourName = sc.next().toLowerCase() + "%20" + sc.next().toLowerCase();
+		tourDate = sc.next();
+		sc.close();
 		
-		Toast toast = Toast.makeText(this, str, Toast.LENGTH_SHORT);
-		toast.show();
+		
+		if(checkBox.isChecked()){
+			new TourChooseResign().execute();
+			Toast toast = Toast.makeText(this, "Wybra³eœ:\n" + str, Toast.LENGTH_SHORT);
+			toast.show();
+		}
+		else{
+			new TourChooseResign().execute();
+			Toast toast = Toast.makeText(this, "Zrezygnowa³eœ:\n" + str, Toast.LENGTH_SHORT);
+			toast.show();
+		}
 	}
 	
 	
@@ -74,7 +92,6 @@ public class TouristActivity extends Activity { // implements android.widget.Com
 				URL url = new URL(urlAdress);
 				BufferedReader in = new BufferedReader(new InputStreamReader(url.openStream()));
 				while ((result = in.readLine()) != null) {
-					//tourNames.add(result);
 					Scanner sc = new Scanner(result).useDelimiter("/");
 					while(sc.hasNext()){
 						String name = sc.next();
@@ -90,5 +107,18 @@ public class TouristActivity extends Activity { // implements android.widget.Com
 			catch (IOException e) {}
 			return null;
 		}		
+	}
+	
+	private class TourChooseResign extends AsyncTask<Void, Void, Void> {
+
+		@Override
+		protected Void doInBackground(Void... voids) {
+			try {
+				String urlAdress = "http://10.0.2.2/inz/tourChooseResign.php/?string=" + email + "/" + tourName + "/" + tourDate;
+				URL url = new URL(urlAdress);
+				url.openStream();
+			} catch (IOException e) {}
+			return null;
+		}
 	}
 }
