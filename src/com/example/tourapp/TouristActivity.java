@@ -60,9 +60,8 @@ public class TouristActivity extends Activity { // implements android.widget.Com
 		CheckBox checkBox = (CheckBox) view;
 		String str = ((TextView)view).getText().toString();
 		Scanner sc = new Scanner(str).useDelimiter("\n");
-		tourName = sc.next().toLowerCase();// + " " + sc.next().toLowerCase();
+		tourName = sc.next().toLowerCase();
 		tourName = tourName.replace(" ", "%20");
-		//tourName = sc.next().toLowerCase() + "%20" + sc.next().toLowerCase();
 		tourDate = sc.next();
 		sc.close();
 		

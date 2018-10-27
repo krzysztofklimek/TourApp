@@ -75,7 +75,10 @@ public class LoginActivity extends Activity {
 			} else if (type.equals("g")) {
 				Intent intent = new Intent(LoginActivity.this, GuideActivity.class);
 				startActivity(intent);
-			} else {
+			} else if(type.equals("a")){
+				Intent intent = new Intent(LoginActivity.this, AdminActivity.class);
+				startActivity(intent);
+			}else {
 				Intent intent = new Intent(LoginActivity.this, LoginActivity.class);
 				startActivity(intent);
 			}

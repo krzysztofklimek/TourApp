@@ -32,6 +32,14 @@
             android:name=".GuideActivity"
             android:label="@string/title_activity_guide" >
         </activity>
+        <activity
+            android:name=".OrganizerActivity"
+            android:label="@string/title_activity_organizer" >
+        </activity>
+        <activity
+            android:name=".AdminActivity"
+            android:label="@string/title_activity_admin" >
+        </activity>
     </application>
 
 </manifest>
