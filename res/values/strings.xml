@@ -8,5 +8,7 @@
     <string name="title_activity_organizer">OrganizerActivity</string>
     <string name="action_settings">Settings</string>
     <string name="title_activity_admin">AdminActivity</string>
+    <string name="title_activity_admin_add_tour">AdminAddTourActivity</string>
+    <string name="title_activity_admin_delete_tour">AdminDeleteTourActivity</string>
 
 </resources>

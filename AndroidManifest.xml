@@ -40,6 +40,14 @@
             android:name=".AdminActivity"
             android:label="@string/title_activity_admin" >
         </activity>
+        <activity
+            android:name=".AdminAddTourActivity"
+            android:label="@string/title_activity_admin_add_tour" >
+        </activity>
+        <activity
+            android:name=".AdminDeleteTourActivity"
+            android:label="@string/title_activity_admin_delete_tour" >
+        </activity>
     </application>
 
 </manifest>
