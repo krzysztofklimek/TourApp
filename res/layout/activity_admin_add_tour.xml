@@ -5,8 +5,146 @@
     tools:context="${relativePackage}.${activityClass}" >
 
     <TextView
+        android:id="@+id/tourNameText"
+        android:text="Name:                 "
         android:layout_width="wrap_content"
+        android:layout_height="45dp"
+        android:textColor="#000033"
+        android:textSize="20dp"
+        android:layout_marginTop="20dp"/>
+
+    <EditText
+        android:id="@+id/tourNameEdit"
+        android:digits="abcdefghijklmnoprstuwyzABCDEFGHIJKLMNOPRSTUWYZvx"
+        android:inputType="textCapWords"
+        android:layout_width="match_parent"
+        android:layout_height="45dp"
+        android:textColor="#000033"
+        android:textSize="20dp"
+        android:layout_toRightOf="@id/tourNameText"
+        android:layout_marginTop="15dp"/>
+    
+      <TextView
+        android:id="@+id/tourDateText"
+        android:text="Date:                      "
+        android:layout_width="wrap_content"
+        android:layout_height="45dp"
+        android:textColor="#000033"
+        android:textSize="20dp"
+        android:layout_below="@+id/tourNameText"
+        android:layout_marginTop="20dp"/>
+
+    <EditText
+        android:id="@+id/tourDayEdit"
+        android:inputType="number"
+        android:maxLength="2"
+        android:layout_width="45dp"
+        android:layout_height="45dp"
+        android:textColor="#000033"
+        android:textSize="20dp"
+        android:layout_below="@+id/tourNameEdit"
+        android:layout_toRightOf="@+id/tourDateText"
+        android:layout_marginTop="20dp"/>
+    
+    <TextView
+        android:id="@+id/colon1"
+        android:text=" : "
+        android:layout_width="wrap_content"
+        android:layout_height="45dp"
+        android:textColor="#000033"
+        android:textSize="20dp"
+        android:layout_below="@+id/tourNameEdit"
+        android:layout_toRightOf="@+id/tourDayEdit"
+        android:layout_marginTop="20dp"/>
+
+    <EditText
+        android:id="@+id/tourMonthEdit"
+        android:inputType="number"
+        android:maxLength="2"
+        android:layout_width="45dp"
+        android:layout_height="45dp"
+        android:textColor="#000033"
+        android:textSize="20dp"
+        android:layout_below="@+id/tourNameEdit"
+        android:layout_toRightOf="@+id/colon1"
+        android:layout_marginTop="20dp"/>
+    
+    <TextView
+        android:id="@+id/colon2"
+        android:text=" : "
+        android:layout_width="wrap_content"
+        android:layout_height="45dp"
+        android:textColor="#000033"
+        android:textSize="20dp"
+        android:layout_below="@+id/tourNameEdit"
+        android:layout_toRightOf="@+id/tourMonthEdit"
+        android:layout_marginTop="20dp"/>
+
+    <EditText
+        android:id="@+id/tourYearEdit"
+        android:inputType="number"
+        android:maxLength="4"
+        android:layout_width="90dp"
+        android:layout_height="45dp"
+        android:textColor="#000033"
+        android:textSize="20dp"
+        android:layout_below="@+id/tourNameEdit"
+        android:layout_toRightOf="@+id/colon2"
+        android:layout_marginTop="20dp"/>
+    
+     <TextView
+        android:id="@+id/tourDescriptionText"
+        android:text="Description:             "
+        android:layout_width="wrap_content"
+        android:layout_height="45dp"
+        android:textColor="#000033"
+        android:textSize="20dp"
+        android:layout_below="@+id/tourDateText"
+        android:layout_marginTop="20dp"/>
+
+    <EditText
+        android:id="@+id/tourDescriptionEdit"
+        android:digits="abcdefghijklmnoprstuwyzABCDEFGHIJKLMNOPRSTUWYZvx"
+        android:inputType="textCapWords"
+        android:layout_width="match_parent"
+        android:layout_height="45dp"
+        android:textColor="#000033"
+        android:textSize="20dp"
+        android:layout_toRightOf="@id/tourDescriptionText"
+        android:layout_below="@+id/tourDayEdit"
+        android:layout_marginTop="15dp"/>
+    
+    <TextView
+        android:id="@+id/tourGuideText"
+        android:text="Guide:            "
+        android:layout_width="wrap_content"
+        android:layout_height="45dp"
+        android:textColor="#000033"
+        android:textSize="20dp"
+        android:layout_below="@+id/tourDescriptionText"
+        android:layout_marginTop="20dp"/>
+
+    <Spinner
+        android:id="@+id/spinner"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="@string/hello_world" />
+        android:layout_toRightOf="@id/tourGuideText"
+        android:layout_below="@+id/tourDescriptionEdit"
+        android:layout_marginTop="10dp"/>
+    
+    
+    <Button
+        android:id="@+id/addTourButton"
+        android:backgroundTint="#89f200"
+        android:layout_width="match_parent"
+        android:layout_height="70dp"
+        android:text="add tour"
+        android:textSize="30dp"
+        android:gravity="center"
+        android:layout_below="@+id/tourGuideText"
+        android:layout_marginTop="35dp"
+        android:onClick="onAddTourClick"/>
+    
+    
 
 </RelativeLayout>
