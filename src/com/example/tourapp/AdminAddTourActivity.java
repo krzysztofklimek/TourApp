@@ -16,17 +16,27 @@ import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.ArrayAdapter;
+import android.widget.BaseAdapter;
+import android.widget.EditText;
+import android.widget.ListAdapter;
+import android.widget.ListView;
 import android.widget.Spinner;
+import android.widget.SpinnerAdapter;
 
 public class AdminAddTourActivity extends Activity {
 
-	private ArrayAdapter<String> adapter;
+	ArrayAdapter<String> adapter;
+	ArrayList<String> spinnerValuesList = new ArrayList<String>();
+	String[] spinnerValuesArray;
 
 	
-	private ArrayList<String> spinnerValues = new ArrayList<String>();
-	//private List <String> valuesToSpinnerArrayList = new ArrayList<String>();;
+	private static EditText tourNameEdit, tourDayEdit, tourMonthEdit;
+	private static EditText tourYearEdit, tourDescriptionEdit;
 	private static android.widget.Spinner spinner;
-	List<String> arl = new ArrayList<String>();
+	
+	private String name, day, month, year, description, guide;
+	
+	
 	
 	
 
@@ -34,28 +44,68 @@ public class AdminAddTourActivity extends Activity {
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_admin_add_tour);
+		
+		tourNameEdit = (EditText) findViewById(R.id.tourNameEdit);
+		tourDayEdit = (EditText) findViewById(R.id.tourDayEdit);
+		tourMonthEdit = (EditText) findViewById(R.id.tourMonthEdit);
+		tourYearEdit = (EditText) findViewById(R.id.tourYearEdit);
+		tourDescriptionEdit = (EditText) findViewById(R.id.tourDescriptionEdit);
+		
+		
 
-		spinner = (Spinner) findViewById(R.id.spinner);
-		
-		//List<String> arl = new ArrayList<String>();
-		arl.add("qq");
-		arl.add("ww");
+		createSpinner();
+
+		/*
+		 * new SpinnerFill().execute();
+		 * 
+		 * try { Thread.sleep(1000); } catch (InterruptedException e) {
+		 * e.printStackTrace(); }
+		 * 
+		 * spinnerValuesArray = new String[spinnerValuesList.size()];
+		 * 
+		 * for (int i = 0; i < spinnerValuesList.size(); i++) {
+		 * spinnerValuesArray[i] = spinnerValuesList.get(i); }
+		 * 
+		 * adapter = new ArrayAdapter<String>(this, R.layout.item_spinner,
+		 * R.id.itemSpinner, spinnerValuesArray); spinner = (Spinner)
+		 * findViewById(R.id.spinner); spinner.setAdapter(adapter);
+		 */
+
+	}
+
+	private void createSpinner() {
+
 		new SpinnerFill().execute();
-		
-		//spinnerValues = new ArrayList<String>(arl);
-		for(String x : arl){
-			spinnerValues.add(x);
+
+		try {
+			Thread.sleep(1000);
+		} catch (InterruptedException e) {
+			e.printStackTrace();
 		}
-		//valuesToSpinnerArrayList = new ArrayList<String>();
-		//new SpinnerFill().execute();
-		//spinnerValues = new ArrayList<String>(valuesToSpinnerArrayList);
-		adapter = new ArrayAdapter<String>(this, R.layout.item_spinner, R.id.itemSpinner, spinnerValues);
+
+		spinnerValuesArray = new String[spinnerValuesList.size()];
+		for (int i = 0; i < spinnerValuesList.size(); i++) {
+			spinnerValuesArray[i] = spinnerValuesList.get(i);
+		}
+
+		adapter = new ArrayAdapter<String>(this, R.layout.item_spinner, R.id.itemSpinner, spinnerValuesArray);
+		spinner = (Spinner) findViewById(R.id.spinner);
 		spinner.setAdapter(adapter);
 
 	}
 	
-	private class SpinnerFill extends AsyncTask<Void, Void, Void> {
+	
+	public void onAddTourClick(){
+		name = tourNameEdit.getText().toString();
+		day = tourDayEdit.getText().toString();
+		month = tourMonthEdit.getText().toString();
+		year = tourYearEdit.getText().toString();
+		description = tourDescriptionEdit.getText().toString();
+		guide = (String) spinner.getSelectedItem().toString();
 		
+	}
+
+	private class SpinnerFill extends AsyncTask<Void, Void, Void> {
 
 		@Override
 		protected Void doInBackground(Void... voids) {
@@ -67,16 +117,18 @@ public class AdminAddTourActivity extends Activity {
 				BufferedReader in = new BufferedReader(new InputStreamReader(url.openStream()));
 				while ((result = in.readLine()) != null) {
 					Scanner sc = new Scanner(result).useDelimiter("/");
-					while(sc.hasNext()){
-						arl.add(sc.next());
-						//valuesToSpinnerArrayList.add(sc.next());
+					while (sc.hasNext()) {
+
+						spinnerValuesList.add(sc.next());
+
 					}
 					sc.close();
 				}
-			} 
-			catch (MalformedURLException e) {} 
-			catch (IOException e) {}
+			} catch (MalformedURLException e) {
+			} catch (IOException e) {
+			}
 			return null;
-		}		
+		}
+
 	}
 }
