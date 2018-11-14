@@ -149,14 +149,14 @@ public class AdminAddTourActivity extends Activity {
 		private String month = tourMonthEdit.getText().toString();
 		private String year = tourYearEdit.getText().toString();
 		private String description = tourDescriptionEdit.getText().toString();
-		//private String guide = (String) spinner.getSelectedItem().toString();
+		private String guide = (String) spinner.getSelectedItem().toString();
 
 		
 		@Override
 		protected Void doInBackground(Void... voids) {
 			try {
 				String urlAdress = "http://10.0.2.2/inz/adminTourAdd.php/?string=" + name + "/" + year
-						+ "-" + month + "-" + day + "/" + description;
+						+ "-" + month + "-" + day + "/" + description + "/" + guide;
 				URL url = new URL(urlAdress);
 				url.openStream();
 			} catch (IOException e) {}
