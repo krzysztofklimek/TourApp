@@ -22,6 +22,8 @@ public class AdminActivity extends Activity {
 	
 	
 	public static final String EXTRA_EMAIL = "email";
+	
+	
 	String email;
 	String tourName;
 	String tourDate;
@@ -64,6 +66,7 @@ public class AdminActivity extends Activity {
         switch (item.getItemId()) {
             case R.id.action_add_tour:
                 Intent intent1 = new Intent(this, AdminAddTourActivity.class);
+                intent1.putExtra(AdminActivity.EXTRA_EMAIL, (String) email);
                 startActivity(intent1);
                 return true;
             case R.id.action_delete_tour:

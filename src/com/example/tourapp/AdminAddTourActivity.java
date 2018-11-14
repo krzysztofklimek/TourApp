@@ -15,6 +15,7 @@ import android.os.AsyncTask;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.BaseAdapter;
 import android.widget.EditText;
@@ -22,19 +23,27 @@ import android.widget.ListAdapter;
 import android.widget.ListView;
 import android.widget.Spinner;
 import android.widget.SpinnerAdapter;
+import android.widget.Toast;
+import android.content.Intent;
 
 public class AdminAddTourActivity extends Activity {
+	
+	public static final String EXTRA_EMAIL = "email";
+	String email;
 
 	ArrayAdapter<String> adapter;
 	ArrayList<String> spinnerValuesList = new ArrayList<String>();
 	String[] spinnerValuesArray;
 
 	
-	private static EditText tourNameEdit, tourDayEdit, tourMonthEdit;
-	private static EditText tourYearEdit, tourDescriptionEdit;
+	EditText tourNameEdit, tourDayEdit, tourMonthEdit;
+	EditText tourYearEdit, tourDescriptionEdit;
+	
 	private static android.widget.Spinner spinner;
 	
-	private String name, day, month, year, description, guide;
+	//private String name, day, month, year, description, guide;
+	
+	
 	
 	
 	
@@ -44,6 +53,8 @@ public class AdminAddTourActivity extends Activity {
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_admin_add_tour);
+		
+		email = (String) getIntent().getExtras().get(EXTRA_EMAIL);
 		
 		tourNameEdit = (EditText) findViewById(R.id.tourNameEdit);
 		tourDayEdit = (EditText) findViewById(R.id.tourDayEdit);
@@ -72,6 +83,10 @@ public class AdminAddTourActivity extends Activity {
 		 */
 
 	}
+	
+	public void onAddTourClick(View view) {
+		new AddTourTask().execute();
+	}
 
 	private void createSpinner() {
 
@@ -95,15 +110,9 @@ public class AdminAddTourActivity extends Activity {
 	}
 	
 	
-	public void onAddTourClick(){
-		name = tourNameEdit.getText().toString();
-		day = tourDayEdit.getText().toString();
-		month = tourMonthEdit.getText().toString();
-		year = tourYearEdit.getText().toString();
-		description = tourDescriptionEdit.getText().toString();
-		guide = (String) spinner.getSelectedItem().toString();
-		
-	}
+/*	public void onAddTourClick(View view) {
+		new AddTourTask().execute();
+	}*/
 
 	private class SpinnerFill extends AsyncTask<Void, Void, Void> {
 
@@ -130,5 +139,38 @@ public class AdminAddTourActivity extends Activity {
 			return null;
 		}
 
+	}
+	
+	
+	private class AddTourTask extends AsyncTask<Void, Void, Void> {
+		
+		private String name = tourNameEdit.getText().toString();
+		private String day = tourDayEdit.getText().toString();
+		private String month = tourMonthEdit.getText().toString();
+		private String year = tourYearEdit.getText().toString();
+		private String description = tourDescriptionEdit.getText().toString();
+		//private String guide = (String) spinner.getSelectedItem().toString();
+
+		
+		@Override
+		protected Void doInBackground(Void... voids) {
+			try {
+				String urlAdress = "http://10.0.2.2/inz/adminTourAdd.php/?string=" + name + "/" + year
+						+ "-" + month + "-" + day + "/" + description;
+				URL url = new URL(urlAdress);
+				url.openStream();
+			} catch (IOException e) {}
+			return null;
+		}
+		
+		@Override
+		protected void onPostExecute(Void voids) {
+
+			/*Toast toast = Toast.makeText(this, "Added new tour", Toast.LENGTH_SHORT);
+	        toast.show();*/
+			Intent intent = new Intent(AdminAddTourActivity.this, AdminActivity.class);
+			intent.putExtra(AdminActivity.EXTRA_EMAIL, (String) email);
+	        startActivity(intent);
+		}
 	}
 }
