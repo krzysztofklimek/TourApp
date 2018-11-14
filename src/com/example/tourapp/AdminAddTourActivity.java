@@ -110,6 +110,7 @@ public class AdminAddTourActivity extends Activity {
 	}
 	
 	
+	
 /*	public void onAddTourClick(View view) {
 		new AddTourTask().execute();
 	}*/
@@ -166,8 +167,8 @@ public class AdminAddTourActivity extends Activity {
 		@Override
 		protected void onPostExecute(Void voids) {
 
-			/*Toast toast = Toast.makeText(this, "Added new tour", Toast.LENGTH_SHORT);
-	        toast.show();*/
+			Toast toast = Toast.makeText(AdminAddTourActivity.this, "Added: " + name, Toast.LENGTH_SHORT);
+	        toast.show();
 			Intent intent = new Intent(AdminAddTourActivity.this, AdminActivity.class);
 			intent.putExtra(AdminActivity.EXTRA_EMAIL, (String) email);
 	        startActivity(intent);

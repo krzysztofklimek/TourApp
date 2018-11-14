@@ -48,6 +48,10 @@
             android:name=".AdminDeleteTourActivity"
             android:label="@string/title_activity_admin_delete_tour" >
         </activity>
+        <activity
+            android:name=".AdminDeleteTourDecisionActivity"
+            android:label="@string/title_activity_admin_delete_tour_decision" >
+        </activity>
     </application>
 
 </manifest>

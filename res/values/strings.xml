@@ -10,5 +10,6 @@
     <string name="title_activity_admin">AdminActivity</string>
     <string name="title_activity_admin_add_tour">AdminAddTourActivity</string>
     <string name="title_activity_admin_delete_tour">AdminDeleteTourActivity</string>
+    <string name="title_activity_admin_delete_tour_decision">AdminDeleteTourDecisionActivity</string>
 
 </resources>
