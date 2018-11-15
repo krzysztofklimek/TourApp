@@ -49,11 +49,37 @@ public class TouristActivity extends Activity { // implements android.widget.Com
 	private void createList(){
 		
 		new NamesFill().execute();
+
 		
 		adapter = new TouristListAdapter(TouristActivity.this, tours);
 		list = (ListView) findViewById(R.id.listViewTourist);
 		list.setAdapter(adapter);	
 	}
+	
+	private ArrayList<Tour> orderTours(ArrayList<Tour> arg) {
+
+		Tour tour;
+		boolean loop = true;
+		int repeat;
+
+		do {
+			repeat = 0;
+			for (int i = 0; i < arg.size() - 1; i++) {
+				if (arg.get(i).getValue() > arg.get(i + 1).getValue()) {
+					tour = arg.get(i);
+					arg.add(i, arg.get(i + 1));
+					arg.add(i + 1, tour);
+					repeat++;
+				}
+			}
+		} while (repeat != 0);
+
+		
+		return arg;
+	}
+	
+	
+	
 	
 	public void onCheckBoxClick(View view){
 			
@@ -77,6 +103,40 @@ public class TouristActivity extends Activity { // implements android.widget.Com
 			toast.show();
 		}
 	}
+	
+	
+	@Override
+	public boolean onCreateOptionsMenu(Menu menu) {
+		// Przygotowujemy menu; jeœli jest pasek akcji to dodajemy do niego
+		// elementy.
+		getMenuInflater().inflate(R.menu.tourist_menu_options, menu);
+		return super.onCreateOptionsMenu(menu);
+	}
+
+	@Override
+	public boolean onOptionsItemSelected(MenuItem item) {
+		switch (item.getItemId()) {
+		case R.id.action_tourist_tours:
+			Intent intent1 = new Intent(this, TouristChoosenToursActivity.class);
+			intent1.putExtra(AdminActivity.EXTRA_EMAIL, (String) email);
+			startActivity(intent1);
+			return true;
+		case R.id.action_refresh:
+			Intent intent2 = new Intent(this, TouristActivity.class);
+			intent2.putExtra(TouristActivity.EXTRA_EMAIL, (String) email);
+			startActivity(intent2);
+			return true;
+		case R.id.action_logout:
+			Intent intent3 = new Intent(this, LoginActivity.class);
+			startActivity(intent3);
+			return true;
+		default:
+			return super.onOptionsItemSelected(item);
+		}
+	}
+	
+	
+	
 	
 	
 	private class NamesFill extends AsyncTask<Void, Void, Void> {
@@ -106,6 +166,8 @@ public class TouristActivity extends Activity { // implements android.widget.Com
 			catch (IOException e) {}
 			return null;
 		}		
+		
+		
 	}
 	
 	private class TourChooseResign extends AsyncTask<Void, Void, Void> {

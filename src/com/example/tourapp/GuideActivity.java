@@ -11,6 +11,7 @@ import java.util.Scanner;
 //import com.example.tourapp.TouristActivity.NamesFill;
 
 import android.app.Activity;
+import android.content.Intent;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.view.Menu;
@@ -46,6 +47,32 @@ public class GuideActivity extends Activity {
 		list = (ListView) findViewById(R.id.listViewGuide);
 		list.setAdapter(adapter);	
 	}
+	
+	@Override
+	public boolean onCreateOptionsMenu(Menu menu) {
+		// Przygotowujemy menu; jeœli jest pasek akcji to dodajemy do niego
+		// elementy.
+		getMenuInflater().inflate(R.menu.guide_menu_options, menu);
+		return super.onCreateOptionsMenu(menu);
+	}
+
+	@Override
+	public boolean onOptionsItemSelected(MenuItem item) {
+		switch (item.getItemId()) {
+		case R.id.action_refresh:
+			Intent intent1 = new Intent(this, GuideActivity.class);
+			intent1.putExtra(GuideActivity.EXTRA_EMAIL, (String) email);
+			startActivity(intent1);
+			return true;
+		case R.id.action_logout:
+			Intent intent3 = new Intent(this, LoginActivity.class);
+			startActivity(intent3);
+			return true;
+		default:
+			return super.onOptionsItemSelected(item);
+		}
+	}
+	
 	
 	
 	private class NamesFill extends AsyncTask<Void, Void, Void> {

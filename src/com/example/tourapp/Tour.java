@@ -1,11 +1,14 @@
 package com.example.tourapp;
 
+import java.util.Scanner;
+
 public class Tour {
 
 	private String name;
 	private String date;
 	private String description;
 	private boolean checked;
+	private int value;
 
 	public Tour(String name, String date, String description, String checked) {
 		this.name = name;
@@ -15,6 +18,15 @@ public class Tour {
 			this.checked = true;
 		else
 			this.checked = false;
+		
+		Scanner sc = new Scanner(date).useDelimiter("-");
+		int year = Integer.parseInt(sc.next());
+		int month = Integer.parseInt(sc.next());
+		int day = Integer.parseInt(sc.next());
+		sc.close();
+		
+		this.value = year*10000 + month*100 + day;
+		
 		
 	}
 
@@ -48,5 +60,9 @@ public class Tour {
 	
 	public boolean getChecked(){
 		return checked;
+	}
+	
+	public int getValue(){
+		return value;
 	}
 }
