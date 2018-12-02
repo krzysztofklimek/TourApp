@@ -20,6 +20,7 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.Toast;
 
 public class LoginActivity extends Activity {
 
@@ -80,7 +81,10 @@ public class LoginActivity extends Activity {
 				Intent intent = new Intent(LoginActivity.this, AdminActivity.class);
 				intent.putExtra(AdminActivity.EXTRA_EMAIL, (String) log);
 				startActivity(intent);
-			}else {
+			}else{
+				Toast toast = Toast.makeText(LoginActivity.this, "Wrong email or password",
+						Toast.LENGTH_SHORT);
+				toast.show();
 				Intent intent = new Intent(LoginActivity.this, LoginActivity.class);
 				startActivity(intent);
 			}

@@ -21,6 +21,9 @@
          android:onClick="onCheckBoxClick" 
          android:button="@null"
 		 android:drawableRight="?android:attr/listChoiceIndicatorMultiple"
+		 android:textSize="20dp"
+		 android:layout_marginTop="10dp"
+		 android:layout_marginBottom="10dp"
          />
     
     
@@ -38,9 +41,11 @@
         android:id="@+id/tourDescription"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:textSize="20dp"
         android:hint="password"
-        android:layout_below="@+id/checkBox"
+        android:layout_toRightOf="@id/checkBox"
+        android:textSize="17dp"
+        android:layout_marginTop="10dp"
+        android:layout_marginLeft="20dp"
         />
 
     
