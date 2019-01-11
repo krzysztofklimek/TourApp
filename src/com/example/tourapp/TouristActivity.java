@@ -208,20 +208,6 @@ public class TouristActivity extends Activity { // implements
 			return null;
 		}
 
-		/*
-		 * @Override protected Void doInBackground(Void... voids) {
-		 * 
-		 * try { String result = ""; String urlAdress =
-		 * "http://10.0.2.2/inz/touristTourList.php/?string=" + email; URL url =
-		 * new URL(urlAdress); BufferedReader in = new BufferedReader(new
-		 * InputStreamReader(url.openStream())); while ((result = in.readLine())
-		 * != null) { Scanner sc = new Scanner(result).useDelimiter("/");
-		 * while(sc.hasNext()){ String name = sc.next(); String date =
-		 * sc.next(); String description = sc.next(); String checkbox =
-		 * sc.next(); tours.add(new Tour(name.toUpperCase(), date, description,
-		 * checkbox)); } sc.close(); } } catch (MalformedURLException e) {}
-		 * catch (IOException e) {} return null; }
-		 */
 
 	}
 

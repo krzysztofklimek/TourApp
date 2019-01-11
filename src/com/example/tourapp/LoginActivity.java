@@ -82,7 +82,7 @@ public class LoginActivity extends Activity {
 				intent.putExtra(AdminActivity.EXTRA_EMAIL, (String) log);
 				startActivity(intent);
 			}else{
-				Toast toast = Toast.makeText(LoginActivity.this, "Wrong email or password",
+				Toast toast = Toast.makeText(LoginActivity.this, "Z³y email lub has³o",
 						Toast.LENGTH_SHORT);
 				toast.show();
 				Intent intent = new Intent(LoginActivity.this, LoginActivity.class);

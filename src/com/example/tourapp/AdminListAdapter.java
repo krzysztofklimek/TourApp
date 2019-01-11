@@ -26,12 +26,18 @@ public class AdminListAdapter extends ArrayAdapter<Tour> {
 		TextView dateText = (TextView) customView.findViewById(R.id.tourDate);
 		TextView descriptionText = (TextView) customView.findViewById(R.id.tourDescription);
 		//CheckBox checkBox = (CheckBox) customView.findViewById(R.id.checkBox);
-
+		TextView guideNameText = (TextView) customView.findViewById(R.id.guideName);
+		TextView guideSurnameText = (TextView) customView.findViewById(R.id.guideSurname);
+		
+		
 		nameText.setText(tour.getName());
 		dateText.setText(tour.getDate());
 		descriptionText.setText(tour.getDescription());
 		//checkBox.setChecked(tour.getChecked());
 		//checkBox.setText(tour.getName() + "\n" + tour.getDate());
+		guideNameText.setText(tour.getGuideName());
+		guideSurnameText.setText(tour.getGuideSurname());
+		
 		
 		return customView;
 	}

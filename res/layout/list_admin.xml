@@ -26,5 +26,36 @@
         android:layout_below="@+id/tourDate"
         android:hint="password"
         android:textSize="20dp" />
+    
+    <TextView
+        android:id="@+id/guideInfo"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/tourDescription"
+        android:text="Przewodnik: "
+        android:textSize="20dp" />
+    
+    <TextView
+        android:id="@+id/guideName"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/tourDescription"
+        android:layout_toRightOf="@+id/guideInfo"
+        android:textSize="20dp" />
+    
+    <TextView
+        android:id="@+id/guideSurname"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/tourDescription"
+        android:layout_toRightOf="@+id/guideName"
+        android:textSize="20dp" />
+    
+    
 
+    
 </RelativeLayout>
+
+
+
+

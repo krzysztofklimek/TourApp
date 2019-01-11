@@ -41,7 +41,8 @@ public class AdminActivity extends Activity {
 
 		new NamesFill().execute();
 
-		adapter = new GuideListAdapter(AdminActivity.this, tours);
+		//adapter = new GuideListAdapter(AdminActivity.this, tours);
+		adapter = new AdminListAdapter(AdminActivity.this, tours);
 		list = (ListView) findViewById(R.id.listViewAdmin);
 		list.setAdapter(adapter);
 	}
@@ -93,7 +94,10 @@ public class AdminActivity extends Activity {
 						String date = sc.next();
 						String description = sc.next();
 						String checkbox = sc.next();
-						tours.add(new Tour(name.toUpperCase(), date, description, checkbox));
+						String guideName = sc.next();
+						String guideSurname = sc.next();
+						tours.add(new Tour(name.toUpperCase(), date, description, checkbox, guideName, guideSurname));
+						//tours.add(new Tour(name.toUpperCase(), date, description, checkbox));
 					}
 					sc.close();
 				}
