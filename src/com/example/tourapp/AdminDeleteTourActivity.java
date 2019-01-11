@@ -64,7 +64,8 @@ public class AdminDeleteTourActivity extends Activity {
 
 		new NamesFill().execute();
 
-		adapter = new GuideListAdapter(AdminDeleteTourActivity.this, tours);
+		//adapter = new GuideListAdapter(AdminDeleteTourActivity.this, tours);
+		adapter = new AdminListAdapter(AdminDeleteTourActivity.this, tours);
 		list = (ListView) findViewById(R.id.listViewAdmin);
 		list.setAdapter(adapter);
 		
@@ -106,7 +107,10 @@ public class AdminDeleteTourActivity extends Activity {
 						String date = sc.next();
 						String description = sc.next();
 						String checkbox = sc.next();
-						tours.add(new Tour(name.toUpperCase(), date, description, checkbox));
+						String guideName = sc.next();
+						String guideSurname = sc.next();
+						tours.add(new Tour(name.toUpperCase(), date, description, checkbox, guideName, guideSurname));
+						//tours.add(new Tour(name.toUpperCase(), date, description, checkbox));
 					}
 					sc.close();
 				}

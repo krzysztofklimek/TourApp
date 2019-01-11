@@ -9,7 +9,9 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="password"
-        android:textSize="25dp" />
+        android:textSize="25dp"
+        android:layout_marginTop="10dp"
+        android:layout_marginLeft="5dp" />
 
     <TextView
         android:id="@+id/tourDate"
@@ -17,15 +19,29 @@
         android:layout_height="wrap_content"
         android:layout_below="@+id/tourName"
         android:hint="password"
-        android:textSize="20dp" />
+        android:textSize="20dp"
+        android:layout_marginLeft="5dp" />
+    
+    <TextView
+        android:id="@+id/tourDesc"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/tourDate"
+        android:text="Opis: "
+        android:textSize="17dp" 
+        android:layout_marginTop="10dp"
+        android:layout_marginLeft="5dp"/>
 
     <TextView
         android:id="@+id/tourDescription"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_toRightOf="@+id/tourDesc"
         android:layout_below="@+id/tourDate"
         android:hint="password"
-        android:textSize="20dp" />
+        android:textSize="17dp" 
+        android:layout_marginTop="10dp"
+		android:layout_marginLeft="5dp"/>
     
     <TextView
         android:id="@+id/guideInfo"
@@ -33,7 +49,8 @@
         android:layout_height="wrap_content"
         android:layout_below="@+id/tourDescription"
         android:text="Przewodnik: "
-        android:textSize="20dp" />
+        android:textSize="17dp"
+        android:layout_marginLeft="5dp" />
     
     <TextView
         android:id="@+id/guideName"
@@ -41,7 +58,8 @@
         android:layout_height="wrap_content"
         android:layout_below="@+id/tourDescription"
         android:layout_toRightOf="@+id/guideInfo"
-        android:textSize="20dp" />
+        android:textSize="17dp"
+        android:layout_marginLeft="5dp" />
     
     <TextView
         android:id="@+id/guideSurname"
@@ -49,7 +67,9 @@
         android:layout_height="wrap_content"
         android:layout_below="@+id/tourDescription"
         android:layout_toRightOf="@+id/guideName"
-        android:textSize="20dp" />
+        android:textSize="17dp"
+        android:layout_marginLeft="5dp"
+        android:layout_marginBottom="10dp" />
     
     
 

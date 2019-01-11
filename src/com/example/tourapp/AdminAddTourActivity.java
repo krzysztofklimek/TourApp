@@ -43,11 +43,6 @@ public class AdminAddTourActivity extends Activity {
 	
 	//private String name, day, month, year, description, guide;
 	
-	
-	
-	
-	
-	
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {

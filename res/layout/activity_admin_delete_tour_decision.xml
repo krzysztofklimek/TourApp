@@ -9,19 +9,21 @@
         android:layout_width="wrap_content"
         android:layout_height="45dp"
         android:layout_marginTop="20dp"
-        android:text="Tour to DELETE:"
+        android:text="Wycieczka do USUNIĘCIA:"
         android:textColor="#000033"
-        android:textSize="20dp" />
+        android:textSize="20dp"
+        android:layout_centerHorizontal="true" />
 
     <TextView
         android:id="@+id/tourNameInfo"
         android:layout_width="wrap_content"
         android:layout_height="45dp"
         android:layout_marginTop="20dp"
-        android:text="Name:                 "
+        android:text="Nazwa: "
         android:textColor="#000033"
         android:layout_below="@+id/info"
-        android:textSize="20dp" />
+        android:textSize="20dp"
+        android:layout_marginLeft="10dp" />
 
     <TextView
         android:id="@+id/tourNameText"
@@ -31,17 +33,19 @@
         android:textColor="#000033"
         android:layout_below="@+id/info"
         android:layout_toRightOf="@+id/tourNameInfo"
-        android:textSize="20dp" />
+        android:textSize="30dp"
+        android:layout_marginLeft="10dp" />
 
     <TextView
         android:id="@+id/tourDateInfo"
         android:layout_width="wrap_content"
         android:layout_height="45dp"
         android:layout_marginTop="20dp"
-        android:text="Date:                 "
+        android:text="Data: "
         android:textColor="#000033"
         android:layout_below="@+id/tourNameInfo"
-        android:textSize="20dp" />
+        android:textSize="20dp"
+        android:layout_marginLeft="10dp" />
 
     <TextView
         android:id="@+id/tourDateText"
@@ -51,18 +55,20 @@
         android:textColor="#000033"
         android:layout_below="@+id/tourNameInfo"
         android:layout_toRightOf="@+id/tourDateInfo"
-        android:textSize="20dp" />
+        android:textSize="30dp"
+        android:layout_marginLeft="10dp" />
     
         <Button
         android:id="@+id/deleteButton"
         android:backgroundTint="#d41600"
         android:layout_height="55dp"
-        android:layout_width="300dp"
-        android:text="delete"
+        android:layout_width="270dp"
+        android:text="usuń"
         android:onClick="onDeleteClick"
         android:textSize="25dp"
         android:gravity="center"
         android:layout_below="@+id/tourDateInfo"
-        android:layout_marginTop="30dp"/>
+        android:layout_marginTop="60dp"
+        android:layout_centerHorizontal="true"/>
 
 </RelativeLayout>

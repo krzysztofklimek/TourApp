@@ -25,20 +25,20 @@ public final class R {
         public static final int ic_launcher=0x7f020000;
     }
     public static final class id {
-        public static final int action_add_tour=0x7f080021;
-        public static final int action_delete_tour=0x7f080022;
-        public static final int action_logout=0x7f080023;
-        public static final int action_refresh=0x7f080024;
-        public static final int action_settings=0x7f080020;
-        public static final int action_tourist_tours=0x7f080025;
+        public static final int action_add_tour=0x7f080022;
+        public static final int action_delete_tour=0x7f080023;
+        public static final int action_logout=0x7f080024;
+        public static final int action_refresh=0x7f080025;
+        public static final int action_settings=0x7f080021;
+        public static final int action_tourist_tours=0x7f080026;
         public static final int addTourButton=0x7f08000d;
-        public static final int checkBox=0x7f08001f;
+        public static final int checkBox=0x7f080020;
         public static final int colon1=0x7f080005;
         public static final int colon2=0x7f080007;
         public static final int deleteButton=0x7f080011;
-        public static final int guideInfo=0x7f08001c;
-        public static final int guideName=0x7f08001d;
-        public static final int guideSurname=0x7f08001e;
+        public static final int guideInfo=0x7f08001d;
+        public static final int guideName=0x7f08001e;
+        public static final int guideSurname=0x7f08001f;
         public static final int info=0x7f08000e;
         public static final int itemSpinner=0x7f080018;
         public static final int listViewAdmin=0x7f080000;
@@ -53,7 +53,8 @@ public final class R {
         public static final int tourDateInfo=0x7f080010;
         public static final int tourDateText=0x7f080003;
         public static final int tourDayEdit=0x7f080004;
-        public static final int tourDescription=0x7f08001b;
+        public static final int tourDesc=0x7f08001b;
+        public static final int tourDescription=0x7f08001c;
         public static final int tourDescriptionEdit=0x7f08000a;
         public static final int tourDescriptionText=0x7f080009;
         public static final int tourGuideText=0x7f08000b;

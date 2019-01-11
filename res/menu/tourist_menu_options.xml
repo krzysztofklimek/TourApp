@@ -4,13 +4,13 @@
     
      <item
         android:id="@+id/action_tourist_tours"
-        android:title="choosen tours"/>
+        android:title="wybrane wycieczki"/>
     <item
         android:id="@+id/action_refresh"
-        android:title="refresh"/>
+        android:title="odśwież"/>
     <item
         android:id="@+id/action_logout"
-        android:title="logout"/>
+        android:title="wyloguj"/>
     
     
 
