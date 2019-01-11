@@ -8,7 +8,9 @@ import java.net.URL;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
+import java.util.Map;
 import java.util.Scanner;
+import java.util.TreeMap;
 
 import android.app.Activity;
 import android.os.AsyncTask;
@@ -34,6 +36,8 @@ public class AdminAddTourActivity extends Activity {
 	ArrayAdapter<String> adapter;
 	ArrayList<String> spinnerValuesList = new ArrayList<String>();
 	String[] spinnerValuesArray;
+	
+	Map <String, String> spinnerValueMap = new TreeMap<String, String>(); 
 
 	
 	EditText tourNameEdit, tourDayEdit, tourMonthEdit;
@@ -93,10 +97,19 @@ public class AdminAddTourActivity extends Activity {
 			e.printStackTrace();
 		}
 
-		spinnerValuesArray = new String[spinnerValuesList.size()];
+		spinnerValuesArray = new String[spinnerValueMap.size()];
+		int arrayIndex = 0;
+		for(String x : spinnerValueMap.keySet()){
+			spinnerValuesArray[arrayIndex] = x;
+			arrayIndex++;
+		}
+		
+		
+		
+		/*spinnerValuesArray = new String[spinnerValuesList.size()];
 		for (int i = 0; i < spinnerValuesList.size(); i++) {
 			spinnerValuesArray[i] = spinnerValuesList.get(i);
-		}
+		}*/
 
 		adapter = new ArrayAdapter<String>(this, R.layout.item_spinner, R.id.itemSpinner, spinnerValuesArray);
 		spinner = (Spinner) findViewById(R.id.spinner);
@@ -124,7 +137,14 @@ public class AdminAddTourActivity extends Activity {
 					Scanner sc = new Scanner(result).useDelimiter("/");
 					while (sc.hasNext()) {
 
-						spinnerValuesList.add(sc.next());
+						//spinnerValuesList.add(sc.next());
+						
+						//Scanner mapSc = new Scanner(sc.next()).useDelimiter(" ");
+						//while(mapSc.hasNext()){
+							String value = sc.next();
+							String key = sc.next() + " " + sc.next();
+							spinnerValueMap.put(key, value);
+						//}
 
 					}
 					sc.close();
@@ -146,13 +166,18 @@ public class AdminAddTourActivity extends Activity {
 		private String year = tourYearEdit.getText().toString();
 		private String description = tourDescriptionEdit.getText().toString();
 		private String guide = (String) spinner.getSelectedItem().toString();
+		
+		private String guideEmail = spinnerValueMap.get(guide);
+		
+		private String guideData = guide.replace(' ', '/');
+		
 
 		
 		@Override
 		protected Void doInBackground(Void... voids) {
 			try {
 				String urlAdress = "http://10.0.2.2/inz/adminTourAdd.php/?string=" + name + "/" + year
-						+ "-" + month + "-" + day + "/" + description + "/" + guide;
+						+ "-" + month + "-" + day + "/" + description + "/" + guideData + "/" + guideEmail;
 				URL url = new URL(urlAdress);
 				url.openStream();
 			} catch (IOException e) {}
