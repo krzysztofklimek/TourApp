@@ -16,7 +16,6 @@
 
     <EditText
         android:id="@+id/tourNameEdit"
-        android:digits="abcdefghijklmnoprstuwyzABCDEFGHIJKLMNOPRSTUWYZvx"
         android:inputType="textCapWords"
         android:layout_width="200dp"
         android:layout_height="45dp"
@@ -107,7 +106,6 @@
 
     <EditText
         android:id="@+id/tourDescriptionEdit"
-        android:digits="abcdefghijklmnoprstuwyzABCDEFGHIJKLMNOPRSTUWYZvx"
         android:inputType="textCapWords"
         android:layout_width="200dp"
         android:layout_height="45dp"

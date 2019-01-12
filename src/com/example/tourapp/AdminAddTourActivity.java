@@ -160,11 +160,11 @@ public class AdminAddTourActivity extends Activity {
 	
 	private class AddTourTask extends AsyncTask<Void, Void, Void> {
 		
-		private String name = tourNameEdit.getText().toString();
+		private String name = tourNameEdit.getText().toString().replace(" ", "%20");
 		private String day = tourDayEdit.getText().toString();
 		private String month = tourMonthEdit.getText().toString();
 		private String year = tourYearEdit.getText().toString();
-		private String description = tourDescriptionEdit.getText().toString();
+		private String description = tourDescriptionEdit.getText().toString().replace(" ", "%20");
 		private String guide = (String) spinner.getSelectedItem().toString();
 		
 		private String guideEmail = spinnerValueMap.get(guide);
@@ -187,7 +187,7 @@ public class AdminAddTourActivity extends Activity {
 		@Override
 		protected void onPostExecute(Void voids) {
 
-			Toast toast = Toast.makeText(AdminAddTourActivity.this, "Added: " + name, Toast.LENGTH_SHORT);
+			Toast toast = Toast.makeText(AdminAddTourActivity.this, "Dodano: " + name.replace("%20", " "), Toast.LENGTH_SHORT);
 	        toast.show();
 			Intent intent = new Intent(AdminAddTourActivity.this, AdminActivity.class);
 			intent.putExtra(AdminActivity.EXTRA_EMAIL, (String) email);

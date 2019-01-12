@@ -9,7 +9,18 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="password"
-        android:textSize="25dp" />
+        android:textSize="25dp"
+        android:layout_marginLeft="5dp" />
+    
+    <TextView
+        android:id="@+id/dataInfo"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/tourName"
+        android:text="Data: "
+        android:textSize="17dp" 
+        android:layout_marginTop="10dp"
+        android:layout_marginLeft="5dp"/>
 
     <TextView
         android:id="@+id/tourDate"
@@ -17,14 +28,26 @@
         android:layout_height="wrap_content"
         android:layout_below="@+id/tourName"
         android:hint="password"
-        android:textSize="20dp" />
+        android:layout_toRightOf="@+id/dataInfo"
+        android:layout_marginTop="10dp"
+        android:textSize="17dp" />
 
+    <TextView
+        android:id="@+id/descInfo"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/dataInfo"
+        android:text="Opis: "
+        android:textSize="17dp" 
+        android:layout_marginLeft="5dp"/>
+    
     <TextView
         android:id="@+id/tourDescription"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/tourDate"
         android:hint="password"
-        android:textSize="20dp" />
+        android:layout_toRightOf="@+id/descInfo"
+        android:layout_below="@+id/dataInfo"
+        android:textSize="17dp" />
 
 </RelativeLayout>
